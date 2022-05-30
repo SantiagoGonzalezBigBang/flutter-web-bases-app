@@ -7,12 +7,17 @@ import 'package:bases_web/providers/providers.dart';
 
 class CounterProviderView extends StatelessWidget {
 
-  const CounterProviderView({Key? key}) : super(key: key);
+  const CounterProviderView({
+    Key? key, 
+    required this.base
+  }) : super(key: key);
+
+  final String base;
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => CounterProvider(),
+      create: (context) => CounterProvider(base),
       child: const _CounterProviderBody(),
     );
   }

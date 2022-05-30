@@ -10,7 +10,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) => (constraints.maxWidth > 520) 
+      builder: (BuildContext context, BoxConstraints constraints) => (constraints.maxWidth > 820) 
         ? const _LargeAppBar()
         : const _MobileAppBar()
     );
@@ -47,6 +47,16 @@ class _LargeAppBar extends StatelessWidget {
           CustomFlatButton(
             text: 'Inexistent Screen', 
             onPressed: () => locator<NavigatorService>().navigateTo('/inexistent'),
+            color: Colors.black,
+          ),
+          CustomFlatButton(
+            text: 'Stateful Counter 100',
+            onPressed: () => locator<NavigatorService>().navigateTo('/stateful/100'),
+            color: Colors.black,
+          ),
+          CustomFlatButton(
+            text: 'Provider Counter 200',
+            onPressed: () => locator<NavigatorService>().navigateTo('/provider?q=200'),
             color: Colors.black,
           ),
         ],
@@ -86,6 +96,12 @@ class _MobileAppBar extends StatelessWidget {
           CustomFlatButton(
             text: 'Inexistent Screen', 
             onPressed: () => locator<NavigatorService>().navigateTo('/inexistent'),
+            color: Colors.black,
+          ),
+          const SizedBox(width: 10.0,),
+          CustomFlatButton(
+            text: 'Provider Counter 200',
+            onPressed: () => locator<NavigatorService>().navigateTo('/provider?q=200'),
             color: Colors.black,
           ),
         ],

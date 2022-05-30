@@ -4,8 +4,11 @@ import 'package:bases_web/ui/shared/shared.dart';
 
 class CounterView extends StatefulWidget {
   const CounterView({
-    Key? key
+    Key? key, 
+    required this.base
   }) : super(key: key);
+
+  final String base; 
 
   @override
   State<CounterView> createState() => _CounterViewState();
@@ -13,7 +16,15 @@ class CounterView extends StatefulWidget {
 
 class _CounterViewState extends State<CounterView> {
 
-  int _counter = 0;
+  int _counter = 10;
+
+  @override
+  void initState() {
+    if (int.tryParse(widget.base) != null) {
+      _counter = int.parse(widget.base);
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

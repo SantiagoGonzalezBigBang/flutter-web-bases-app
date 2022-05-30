@@ -7,6 +7,7 @@ import 'package:bases_web/ui/services/services.dart';
 
 void main() {
   setupLocator();
+  Routes.configureRoutes();
   runApp(const MyApp());
 }
 
@@ -18,14 +19,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Bases App',
-      initialRoute: '/stateful',
-      onGenerateRoute: Routes.onGenerateRoute,
+      initialRoute: '/',
+      onGenerateRoute: Routes.fluroRouter.generator,
       navigatorKey: locator<NavigatorService>().navigatorKey,
       builder: (BuildContext context, Widget? view) {
         return MainLayout(
           child: view ?? const SizedBox(),
         );
       },
+      theme: ThemeData.light().copyWith(
+        scaffoldBackgroundColor: Colors.white
+      ),
     );
   }
 }
